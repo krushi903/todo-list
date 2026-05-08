@@ -5,10 +5,12 @@ A simple, interactive todo list application built with HTML, CSS, and JavaScript
 ## Features
 
 - Clean navigation bar with app title and subtitle
+- **Color picker** to customize the theme color (affects navbar, buttons, and accents)
+- **Task counter** showing total tasks and completed tasks
 - Add new todo items with smooth fade-in animation
 - Mark items as completed with animated strike-through and color transition
 - Delete items with slide-out animation
-- Persistent storage using localStorage (todos are saved in your browser)
+- Persistent storage using localStorage (todos and theme color are saved in your browser)
 - Hover effects on buttons and list items
 - Responsive design with centered layout
 
@@ -19,6 +21,7 @@ A simple, interactive todo list application built with HTML, CSS, and JavaScript
 3. Click "Add" or press Enter to add it to the list.
 4. Click on a todo item to mark it as completed/incomplete.
 5. Click the "Delete" button next to an item to remove it.
+6. Use the color picker (Theme selector) to change the app's color theme. Your choice is saved automatically!
 
 ## Files
 

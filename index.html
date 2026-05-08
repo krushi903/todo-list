@@ -113,6 +113,48 @@
             background-color: #d32f2f;
             opacity: 1;
         }
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        .color-picker-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .color-picker-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        input[type="color"] {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -157,6 +199,22 @@
             <input type="text" id="todo-input" placeholder="Add a new todo...">
             <button id="add-btn">Add</button>
         </div>
+        <div class="stats-container">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="total-count">0</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="completed-count">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+            </div>
+            <div class="color-picker-wrapper">
+                <label class="color-picker-label" for="color-picker">Theme:</label>
+                <input type="color" id="color-picker" value="#4CAF50">
+            </div>
+        </div>
         <ul id="todo-list"></ul>
     </div>
 
@@ -164,8 +222,27 @@
         const todoInput = document.getElementById('todo-input');
         const addBtn = document.getElementById('add-btn');
         const todoList = document.getElementById('todo-list');
+        const colorPicker = document.getElementById('color-picker');
+        const totalCount = document.getElementById('total-count');
+        const completedCount = document.getElementById('completed-count');
 
         let todos = JSON.parse(localStorage.getItem('todos')) || [];
+        let themeColor = localStorage.getItem('themeColor') || '#4CAF50';
+        
+        function applyThemeColor(color) {
+            const style = document.createElement('style');
+            style.textContent = `
+                .navbar { background-color: ${color}; }
+                button { background-color: ${color}; }
+                button:hover { background-color: ${color}dd; }
+                input[type="text"]:focus { border-color: ${color}; }
+                .stat-number { color: ${color}; }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        applyThemeColor(themeColor);
+        colorPicker.value = themeColor;
 
         function renderTodos() {
             todoList.innerHTML = '';
@@ -188,6 +265,12 @@
                 li.appendChild(deleteBtn);
                 todoList.appendChild(li);
             });
+            updateStats();
+        }
+
+        function updateStats() {
+            totalCount.textContent = todos.length;
+            completedCount.textContent = todos.filter(todo => todo.completed).length;
         }
 
         function addTodo() {
@@ -235,6 +318,11 @@
             if (e.key === 'Enter') {
                 addTodo();
             }
+        });
+        colorPicker.addEventListener('change', (e) => {
+            const newColor = e.target.value;
+            localStorage.setItem('themeColor', newColor);
+            location.reload();
         });
 
         renderTodos();
