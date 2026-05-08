@@ -7,12 +7,37 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        .nav-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        .container {
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
-        }
-        h1 {
-            text-align: center;
         }
         .todo-input {
             display: flex;
@@ -119,12 +144,21 @@
     </style>
 </head>
 <body>
-    <h1>My Todo List</h1>
-    <div class="todo-input">
-        <input type="text" id="todo-input" placeholder="Add a new todo...">
-        <button id="add-btn">Add</button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div>
+                <h1 class="nav-title">Todo List</h1>
+                <p class="nav-subtitle">Stay organized and productive</p>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="todo-input">
+            <input type="text" id="todo-input" placeholder="Add a new todo...">
+            <button id="add-btn">Add</button>
+        </div>
+        <ul id="todo-list"></ul>
     </div>
-    <ul id="todo-list"></ul>
 
     <script>
         const todoInput = document.getElementById('todo-input');
