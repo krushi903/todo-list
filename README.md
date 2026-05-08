@@ -4,10 +4,11 @@ A simple, interactive todo list application built with HTML, CSS, and JavaScript
 
 ## Features
 
-- Add new todo items
-- Mark items as completed (click on the item)
-- Delete items
+- Add new todo items with smooth fade-in animation
+- Mark items as completed with animated strike-through and color transition
+- Delete items with slide-out animation
 - Persistent storage using localStorage (todos are saved in your browser)
+- Hover effects on buttons and list items
 
 ## How to Use
 
