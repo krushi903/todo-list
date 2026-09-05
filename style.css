@@ -1,0 +1,28 @@
+.container {
+        background-color: lightgreen;
+
+    }
+    .yellow{
+        background-color: yellow;
+    }
+    #special{
+        background-color: orange;
+    }   
+        
+h1 {
+    color: blue;
+}
+
+.container section {
+    background-color: lightgrey;
+}
+.container  section
+{
+    background-color: lightblue;
+}
+
+.sell-cars {
+    padding: 34px;
+    border: 2px solid black;
+    margin: 34px;
+}
